@@ -10,6 +10,14 @@
 <body>
     <h1>INDEX</h1>
 
+    {% if user.is_authenticated %}
+    <p><a href="{% url 'perfil' %}">Perfil</a></p>
+    {% endif %}
     
+
+    {% if not user.is_authenticated %}
+<p><a href="{% url 'login' %}">Login</a></p>
+{% endif %}
+
 </body>
 </html>

@@ -15,12 +15,22 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from core.views import home, cadastro, noticias
-
+from core.views import home, cadastro, noticias, autenticacao, desconectar, perfil, cadastro_manual
+from core.views import listar_categoria, cadastrar_categoria, editar_categoria, remover_categoria
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home, name='home'),
-    # path('login/', login, name='login'),
     path('cadastro/', cadastro, name='cadastro'),
     path('noticias/', noticias, name='noticias'),
+    path('perfil/', perfil, name='noticias'),
+
+    path('login/', autenticacao, name='login'), 
+    path('logout/', desconectar, name='logout'),
+
+    path('cadastro_manual/', cadastro_manual),
+
+    path('categoria/', listar_categoria, name='listar_categoria'),#Categoria
+    path('categoria_cadastrar/', cadastrar_categoria, name='cadastrar_categoria'),
+    path('categoria_editar/<int:id>/', editar_categoria, name='editar_categoria'),
+    path('categoria_remover/<int:id>/', remover_categoria, name='remover_categoria'),
 ]
